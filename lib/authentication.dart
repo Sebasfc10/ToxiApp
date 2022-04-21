@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:toxi_app/app_enum.dart';
+import 'package:toxi_app/push_notification_fmc.dart';
 import 'android_widgets.dart';
 import 'swipe_liquid.dart';
 
@@ -54,6 +55,12 @@ class _AuthenticationState extends State<Authentication> {
   void initState() {
     super.initState();
     widget.isInitialAppState = true;
+
+    //context
+
+    PushNotificationFMC.messagesStream.listen((message){
+      print('MyApp: $message');
+    });
   }
 
   @override
@@ -104,7 +111,7 @@ class _AuthenticationState extends State<Authentication> {
                                'Salut ${(snapshot.data!.docs.length > 0 ? snapshot.data!.docs[0]['name'] : '')}\n\n\Has logrado ingresar con exito en tu App Tóxica\n',
                                 style: TextStyle(
                                   fontFamily: 'Lato',
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.normal,
                                   fontSize: 24.0,
                                   color: Colors.white,
                                   ),
@@ -124,8 +131,10 @@ class _AuthenticationState extends State<Authentication> {
 
 
               SizedBox(
-                height: 420,
+                height: 400,
               ),
+
+              //BOTON EMPEZAR EL TUTORIAL
               SizedBox(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -136,8 +145,20 @@ class _AuthenticationState extends State<Authentication> {
                   onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => SwipeLiquid()));
                   },
-                  child: const Text("Empezar")),
+                  child: Container(
+                    child: Center(
+                      child: const Text("Empezar", style: TextStyle(fontFamily: 'Lato', fontSize: 20.0),
+                      ),
+                    ),
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  ),
               ),
+
+              SizedBox(
+                height: 10,
+              ),
+              
               //BOTON CERRAR SESION
               
               ElevatedButton(

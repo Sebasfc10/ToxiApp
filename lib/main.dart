@@ -5,12 +5,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:toxi_app/aut.dart';
+import 'package:toxi_app/push_notification_fmc.dart';
 import 'android_widgets.dart';
 import 'app_enum.dart';
 //import 'package:form_controller_ui_v1/user_entity.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  PushNotificationFMC.initialzeApp();
   runApp(ChangeNotifierProvider(
       create: (context) => AppFirebaseState(), builder: (context, _) => MyApp()));
 }
@@ -62,6 +65,7 @@ class AppFirebaseState extends ChangeNotifier {
   String? _email;
 
   Future<void> init() async {
+    await PushNotificationFMC.initialzeApp();
     this._email = "";
     await Firebase.initializeApp();
     FirebaseAuth.instance.userChanges().listen((user) {

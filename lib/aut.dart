@@ -11,9 +11,7 @@ class Aut extends StatelessWidget{
     return Column(children: [
           SizedBox(height: 30.0),
           //Image.asset("lib/assets/camisa.png"),
-          SizedBox(
-            height: 8,
-          ),
+          
           //Text(
            // "Bienvenue 🇫🇷",
             //style: TextStyle(fontFamily: 'Lato', fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white),
