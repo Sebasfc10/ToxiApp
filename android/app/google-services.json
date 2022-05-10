@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:650391142371:android:fd83d88aaf76722ce22ad6",
         "android_client_info": {
-          "package_name": "com.example.toxi_app"
+          "package_name": "com.example.ToxiApp"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "650391142371-g7v022am0aa6eb6ad2eia3ktrfjf5h9a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.toxi_app",
+            "package_name": "com.example.ToxiApp",
             "certificate_hash": "eee565b403839130ec22f98d6f8ad3d393244b34"
           }
         },

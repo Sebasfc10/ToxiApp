@@ -1,4 +1,4 @@
-package com.example.toxi_app
+package com.example.ToxiApp
 
 import io.flutter.embedding.android.FlutterActivity
 

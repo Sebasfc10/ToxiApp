@@ -4,10 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:toxi_app/aut.dart';
-import 'package:toxi_app/push_notification_fmc.dart';
-import 'android_widgets.dart';
-import 'app_enum.dart';
+import 'package:toxi_app/Data/Controller/aut.dart';
+import 'package:toxi_app/Data/Controller/push_notification_fmc.dart';
+import 'Data/Controller/android_widgets.dart';
+import 'Data/models/app_enum.dart';
 //import 'package:form_controller_ui_v1/user_entity.dart';
 import 'package:provider/provider.dart';
 

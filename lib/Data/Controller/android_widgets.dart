@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:toxi_app/Data/models/app_enum.dart';
 
-import 'app_enum.dart';
 
 enum gender { MALE, FEMALE }
 

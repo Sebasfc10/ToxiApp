@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:toxi_app/page_home.dart';
-import 'page_user.dart';
+import 'package:toxi_app/Ui/Screen/Quiz/page_home.dart';
+import 'User/page_user.dart';
 
 class Inicio extends StatelessWidget{
   @override

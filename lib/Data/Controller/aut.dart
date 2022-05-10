@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toxi_app/Data/Controller/authentication.dart';
 import 'package:toxi_app/main.dart';
-
-import 'Authentication.dart';
 
 class Aut extends StatelessWidget{
   @override

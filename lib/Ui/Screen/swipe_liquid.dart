@@ -3,8 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:toxi_app/inicio.dart';
-import 'local_noti.dart';
+import 'package:toxi_app/Ui/Screen/inicio.dart';
+import '../../Data/Controller/local_noti.dart';
 
 class SwipeLiquid extends StatelessWidget{
 

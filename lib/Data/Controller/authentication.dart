@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:toxi_app/app_enum.dart';
-import 'package:toxi_app/push_notification_fmc.dart';
-import 'android_widgets.dart';
-import 'swipe_liquid.dart';
+import 'package:toxi_app/Data/Controller/android_widgets.dart';
+import 'package:toxi_app/Data/Controller/push_notification_fmc.dart';
+import 'package:toxi_app/Data/models/app_enum.dart';
+import '../../Ui/Screen/swipe_liquid.dart';
 
 // ignore: must_be_immutable
 class Authentication extends StatefulWidget {
