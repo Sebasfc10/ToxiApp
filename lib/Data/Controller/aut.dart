@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toxi_app/Data/Controller/authentication.dart';
+import 'package:toxi_app/Ui/Widgets/warning_widget_change_notifier.dart';
 import 'package:toxi_app/main.dart';
 
 class Aut extends StatelessWidget{
@@ -15,6 +16,7 @@ class Aut extends StatelessWidget{
            // "Bienvenue 🇫🇷",
             //style: TextStyle(fontFamily: 'Lato', fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white),
           //),
+          const WarningWidgetChangeNotifier(),
           Expanded(
               child: ListView(children: [
             Padding(

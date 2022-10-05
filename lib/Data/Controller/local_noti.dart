@@ -123,6 +123,8 @@ class LocalNoti{
       UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime
       );
+
+      print("Alarma viernes a las 12");
   }
 
 
@@ -210,6 +212,8 @@ class LocalNoti{
 
     //NOTIFICA CADA 2 HORAS - PROBADO
     //await this.flutterLocalNotificationsPlugin.periodicallyShow(0, "title", "body", RepeatInterval.hourly, detailsMini);
+
+    print("Notifica cada 2 a 3 horas");
     
   }
 

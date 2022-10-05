@@ -10,6 +10,7 @@ class Header extends StatelessWidget{
       children: [
         GradiantBack("Bienvenido"),
         CardImageCursoList(),
+        CardImageCursoList(),
       ],
     );
   }

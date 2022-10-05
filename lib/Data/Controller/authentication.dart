@@ -57,10 +57,11 @@ class _AuthenticationState extends State<Authentication> {
     widget.isInitialAppState = true;
 
     //context
-
+    /*
     PushNotificationFMC.messagesStream.listen((message){
       print('MyApp: $message');
     });
+    */
   }
 
   @override
@@ -81,107 +82,116 @@ class _AuthenticationState extends State<Authentication> {
       case AppLoginState.LOGGED_IN:
         // MOSTRAR LA PANTALLA DE INICIO Y EL BOTON DE CIERRE DE SESSION
 
-        return Column(
+        return Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.87,
+          child: Stack(
             children: [
-              //INDICADOR DE CARGA CIRCULAR
-              FutureBuilder<QuerySnapshot>(
-                  future: widget.user,
-                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    //BARRA EN PROGRESO ESPERANDO...
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Stack(
-                          children: [Center(child: CircularProgressIndicator(value: null))],
-                        );
-                      //LA VERIFICACION DEBE SER CORRECTA = DONE
-                    } else if (snapshot.connectionState == ConnectionState.done) {
-                      if (snapshot.hasData){
-                        //RESULTADO
-                        //MENSAJE DE BIENVENIDA
-                        return Column(
-                          children: [
-                            SizedBox(height: 0,),
-                            Text(
-                              "Bienvenue 🇫🇷",
-                              style: TextStyle(fontFamily: 'Lato', fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white),
-                            ),
-                            SizedBox(height: 10.0,),
-                            Container(
-                              child: Text(
-                                //BUSCA EN LA LISTA PARA COLOCAR EL NOMBRE EN LA LISTA
-                               'Salut ${(snapshot.data!.docs.length > 0 ? snapshot.data!.docs[0]['name'] : '')}\n\n\Has logrado ingresar con exito en tu App Tóxica\n',
-                                style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 24.0,
-                                  color: Colors.white,
+            Column(
+                children: [
+                  //INDICADOR DE CARGA CIRCULAR
+                  FutureBuilder<QuerySnapshot>(
+                      future: widget.user,
+                      builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                        //BARRA EN PROGRESO ESPERANDO...
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return Stack(
+                              children: [Center(child: CircularProgressIndicator(value: null))],
+                            );
+                          //LA VERIFICACION DEBE SER CORRECTA = DONE
+                        } else if (snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.hasData){
+                            //RESULTADO
+                            //MENSAJE DE BIENVENIDA
+                            return Column(
+                              children: [
+                                SizedBox(height: 0,),
+                                Text(
+                                  "Bienvenue 🇫🇷",
+                                  style: TextStyle(fontFamily: 'Lato', fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.black),
+                                ),
+                                SizedBox(height: 20.0,),
+                                Container(
+                                  child: Text(
+                                    //BUSCA EN LA LISTA PARA COLOCAR EL NOMBRE EN LA LISTA
+                                   'Salut ${(snapshot.data!.docs.length > 0 ? snapshot.data!.docs[0]['name'] : '')}\n\n\Has logrado ingresar con exito en tu App Tóxica\n',
+                                    style: TextStyle(
+                                      fontFamily: 'Lato',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24.0,
+                                      color: Colors.black
+                                      ),
                                   ),
+                                ),
+                              ],
+                            );
+                          
+                          }
+                        }
+          
+                        return Container(
+                          child: Text('Algo salio mal en el servidor'),
+                        );
+                      }),
+          
+          
+          
+                  
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.6
+                  ),
+          
+                  //BOTON EMPEZAR EL TUTORIAL
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                padding: EdgeInsets.all(15.0),
+                                primary: Colors.white60,
+                                textStyle: TextStyle(fontSize: 20.0)),
+                                
+                          onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => SwipeLiquid()));
+                          },
+                          
+                          child: Container(
+                            child: Center(
+                              child: const Text("Empezar", style: TextStyle(fontFamily: 'Lato', fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             ),
-                          ],
-                        );
+                            width: MediaQuery.of(context).size.width,
+                          ),
+                          ),
                       
-                      }
-                    }
-
-                    return Container(
-                      child: Text('Algo salio mal en el servidor'),
-                    );
-                  }),
-
-
-
-              SizedBox(
-                height: 400,
-              ),
-
-              //BOTON EMPEZAR EL TUTORIAL
-              SizedBox(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                        padding: EdgeInsets.all(15.0),
-                        primary: Color(0xFF242F3B),
-                        textStyle: TextStyle(fontSize: 20.0)),
-                  onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SwipeLiquid()));
-                  },
-                  child: Container(
-                    child: Center(
-                      child: const Text("Empezar", style: TextStyle(fontFamily: 'Lato', fontSize: 20.0),
-                      ),
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                  ),
-                  ),
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-              
-              //BOTON CERRAR SESION
-              
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                      padding: EdgeInsets.all(15.0),
-                      primary: Color(0xFF242F3B),
-                      textStyle: TextStyle(fontSize: 20.0)),
-                  onPressed: () {
-                    print("authentication l");
-                    this.widget.logout();
-                  },
-                  child: Container(
-                    child: Center(
-                      child: Text('Cerrar Sesion',
-                      style: TextStyle(fontFamily: 'Lato', fontWeight: FontWeight.w900, color: Color(0xFFE60023)),),
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                  ) 
-                  )
+                    
                   
+                  
+                  //BOTON CERRAR SESION
+                  /*
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                          padding: EdgeInsets.all(15.0),
+                          primary: Color(0xFF242F3B),
+                          textStyle: TextStyle(fontSize: 20.0)),
+                      onPressed: () {
+                        print("authentication l");
+                        this.widget.logout();
+                      },
+                      child: Container(
+                        child: Center(
+                          child: Text('Cerrar Sesion',
+                          style: TextStyle(fontFamily: 'Lato', fontWeight: FontWeight.w900, color: Color(0xFFE60023)),),
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                      ) 
+                      )
+                      */
+                      
+                ],
+              ),
             ],
-          );
+          ),
+        );
 
         
       //WIDGET ALERT DE LOGIN ERROR

@@ -88,13 +88,13 @@ class AndroidFormInputWidget extends StatelessWidget {
                 value: gender.MALE, groupValue: this.intialValue, onChanged: this.onChange),
             Text(
               "Masculino",
-              style: TextStyle(color: Colors.white, fontSize: 18.0),
+              style: TextStyle(color: Colors.black, fontSize: 18.0),
             ),
             Radio<gender>(
                 value: gender.FEMALE, groupValue: this.intialValue, onChanged: this.onChange),
             Text(
               "Femenino",
-              style: TextStyle(color: Colors.white, fontSize: 18.0),
+              style: TextStyle(color: Colors.black, fontSize: 18.0),
             ),
           ],
         );
@@ -138,114 +138,116 @@ class _LoginAndroidState extends State<LoginAndroid> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-
-            //LOGO
-            Container(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: Image.asset("lib/assets/camisa.png"),
-              ),),
-               SizedBox(
-              height: 20.0,
-            ),
-
-            //IMPUT CORREO
-            AndroidFormInputWidget(
-                controller: _emailController,
-                type: FormInputType.TEXT,
-                hintText: "Correo Tóxico",
-                onChange: (_) {},
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Porfa ingresa tu Email ❤️‍🔥';
-                  }
-                  return null;
-                },
-                intialValue: ''),
-
-
-            SizedBox(
-              height: 10.0,
-            ),
-            
-            //INPUT CONTRASEÑA
-            AndroidFormInputWidget(
-                controller: _passwordController,
-                obscure: true,
-                type: FormInputType.TEXT,
-                hintText: "Contraseña Tóxica",
-                onChange: (_) {},
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Porfa ingresa tu Password 💔';
-                  }
-                  return null;
-                },
-                intialValue: ""),
-            SizedBox(height: 30.0),
-            Row(
-              children: [
-                Expanded(
-                  //BOTON ENTRAR
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-                            padding: EdgeInsets.all(14.0),
-                            primary: Color(0xFF242F3B),
-                            textStyle: TextStyle(fontSize: 20.0)),
-                        onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
-                            widget.login(_emailController.text, _passwordController.text);
-                          }
-                          // setState(() {
-                          //   //  this.//isLogin = !true;
-                          // });
-                        },
-                        child: Container(
-                          child: Center(
-                          child: Text("Entrar",
-                          style: TextStyle(fontFamily: 'Quicksand', fontSize: 22.0, fontWeight: FontWeight.bold),)
-                          ),
-                          width: MediaQuery.of(context).size.width,
+    return SingleChildScrollView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+      child: Container(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+    
+              //LOGO
+              Container(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50.0),
+                  child: Image.asset("lib/assets/camisa.png"),
+                ),),
+                 SizedBox(
+                height: 20.0,
+              ),
+    
+              //IMPUT CORREO
+              AndroidFormInputWidget(
+                  controller: _emailController,
+                  type: FormInputType.TEXT,
+                  hintText: "Correo Tóxico",
+                  onChange: (_) {},
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Porfa ingresa tu Email ❤️‍🔥';
+                    }
+                    return null;
+                  },
+                  intialValue: ''),
+    
+              SizedBox(
+                height: 10.0,
+              ),
+              
+              //INPUT CONTRASEÑA
+              AndroidFormInputWidget(
+                  controller: _passwordController,
+                  obscure: true,
+                  type: FormInputType.TEXT,
+                  hintText: "Contraseña Tóxica",
+                  onChange: (_) {},
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Porfa ingresa tu Password 💔';
+                    }
+                    return null;
+                  },
+                  intialValue: ""),
+              SizedBox(height: 30.0),
+              Row(
+                children: [
+                  Expanded(
+                    //BOTON ENTRAR
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+                              padding: EdgeInsets.all(14.0),
+                              primary: Color(0xFF242F3B),
+                              textStyle: TextStyle(fontSize: 20.0)),
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              widget.login(_emailController.text, _passwordController.text);
+                            }
+                            // setState(() {
+                            //   //  this.//isLogin = !true;
+                            // });
+                          },
+                          child: Container(
+                            child: Center(
+                            child: Text("Entrar",
+                            style: TextStyle(fontFamily: 'Quicksand', fontSize: 22.0, fontWeight: FontWeight.bold),)
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            ),
                           ),
                         ),
-                      ),
-              ],
-            ),
-            SizedBox(height: 15.0),
-
-            //BOTON REGISTRARSE
-            ElevatedButton(
-              onPressed: () {
-                widget.getEnrolled();
-              },
-              
-              child: Container(
-                child: Center(
-                  child: Text(
-                    'Registrate',
-                     style: TextStyle(fontFamily: 'Quicksand', fontSize: 19.0, fontWeight: FontWeight.bold, color: Color(0xFF1B232D)),
-                  ),
-                ),
-                width: MediaQuery.of(context).size.width,
+                ],
               ),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
-                  padding: EdgeInsets.all(18.0),
-                  primary: Colors.white,
-                  textStyle: TextStyle(
-                    fontSize: 15.0,
-                  )),
-            )
-          ],
+              SizedBox(height: 15.0),
+    
+              //BOTON REGISTRARSE
+              ElevatedButton(
+                onPressed: () {
+                  widget.getEnrolled();
+                },
+                
+                child: Container(
+                  child: Center(
+                    child: Text(
+                      'Registrate',
+                       style: TextStyle(fontFamily: 'Quicksand', fontSize: 19.0, fontWeight: FontWeight.bold, color: Color(0xFF1B232D)),
+                    ),
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13.0)),
+                    padding: EdgeInsets.all(18.0),
+                    primary: Colors.white70,
+                    textStyle: TextStyle(
+                      fontSize: 15.0,
+                    )),
+              )
+            ],
+          ),
         ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       ),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
     );
   }
 }
@@ -435,7 +437,7 @@ class _RegisterAndroidState extends State<RegisterAndroid> {
               children: [
                 Text(
                   "Notificame de ToxiNoticias",
-                  style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Lato'),
+                  style: TextStyle(color: Colors.black, fontSize: 18.0, fontFamily: 'Lato'),
                 ),
                 AndroidFormInputWidget(
                   type: FormInputType.SWITCH,
@@ -459,7 +461,7 @@ class _RegisterAndroidState extends State<RegisterAndroid> {
                   children: [
                     Text(
                       "¿Eres menor de edad?",
-                      style: TextStyle(color: Colors.white, fontSize: 18.0, fontFamily: 'Lato'),
+                      style: TextStyle(color: Colors.black, fontSize: 18.0, fontFamily: 'Lato'),
                     ),
                     AndroidFormInputWidget(
                         type: FormInputType.CHECK_BOX,
@@ -510,7 +512,7 @@ class _RegisterAndroidState extends State<RegisterAndroid> {
                       primary: Color(0xFF426d8e),
                       textStyle: TextStyle(fontSize: 20.0)),
                       //BOTON DE REGISTRAR
-                  child: Text('Registrarte', style: TextStyle(fontFamily: 'Quick', fontSize: 19.0, fontWeight: FontWeight.bold),),
+                  child: Text('Registrarte', style: TextStyle(fontFamily: 'Quicksand', fontSize: 19.0, fontWeight: FontWeight.bold),),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       widget.register(
@@ -528,6 +530,7 @@ class _RegisterAndroidState extends State<RegisterAndroid> {
                     // setState(() {
                     //   //this.//isLogin = true;
                     // });
+                    
                   },
                 )),
                 SizedBox(
@@ -541,7 +544,7 @@ class _RegisterAndroidState extends State<RegisterAndroid> {
                       padding: EdgeInsets.all(14.0),
                       primary: Color(0xFF242F3B),
                       textStyle: TextStyle(fontSize: 20.0)),
-                  child: Text('Cancelar', style: TextStyle(fontFamily: 'Quick', fontWeight: FontWeight.bold),),
+                  child: Text('Cancelar', style: TextStyle(fontFamily: 'Quicksand', fontWeight: FontWeight.bold),),
                   onPressed: () {
                     print('RegisterAndroid cancel onpressed');
                     widget.cancel();

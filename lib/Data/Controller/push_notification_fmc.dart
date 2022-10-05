@@ -33,6 +33,7 @@ class PushNotificationFMC {
   static Future initialzeApp() async {
     //puhs notifications
 
+    //IMPRIMIR TOKEN
     await Firebase.initializeApp();
     token = await FirebaseMessaging.instance.getToken();
     print('Token: $token');
@@ -43,6 +44,7 @@ class PushNotificationFMC {
     FirebaseMessaging.onMessageOpenedApp.listen( _onMessageOpenApp );
 
     //Local Notifications
+    //TODO
   }
 
   static closeStreams() {

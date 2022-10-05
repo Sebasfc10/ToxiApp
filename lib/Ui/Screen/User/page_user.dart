@@ -28,7 +28,7 @@ class _PageUser extends State<PageUser>{
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                       padding: EdgeInsets.all(15.0),
-                      primary: Color(0xFF242F3B),
+                      primary: Colors.white54,
                       textStyle: TextStyle(fontSize: 20.0)),
                   onPressed: () {
                     print("authentication l");
@@ -42,7 +42,7 @@ class _PageUser extends State<PageUser>{
                     ),
                     width: MediaQuery.of(context).size.width,
                   ),
-                  )
+                )
                   
       ],
     );

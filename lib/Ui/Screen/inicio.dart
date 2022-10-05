@@ -23,14 +23,15 @@ class Pantalla extends StatefulWidget{
     int sigIndice = 0;
 
     List listOfItem = [
+      
+      PageHome(),
       Container(
-        color: Colors.black,
+        color: Colors.white,
         child: PageUser(),
       ),
-      PageHome(),
       //Container(color: Colors.blue,),
       Container(
-        color: Color.fromARGB(255, 148, 13, 3),
+        color: Colors.white,
       ),
     ];
   @override
@@ -41,7 +42,9 @@ class Pantalla extends StatefulWidget{
       body: listOfItem[sigIndice],
 
       bottomNavigationBar: BottomNavyBar(
-        backgroundColor: Color(0xFF242F3B),
+        
+        //backgroundColor: Color(0xFF242F3B),
+        backgroundColor: Colors.white,
         selectedIndex: sigIndice,
         animationDuration: Duration(milliseconds: 300),
         //curve: Curves.elasticInOut,
@@ -52,20 +55,20 @@ class Pantalla extends StatefulWidget{
         },
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
-            icon: Icon(Icons.person_outlined),
-            title: Text('Perfil'),
+            icon: Icon(Icons.home_filled),
+            title: Text('Inicio'),
             activeColor: Colors.redAccent,
             inactiveColor: Colors.black,
             ),
             BottomNavyBarItem(
-            icon: Icon(Icons.home_filled),
-            title: Text('Home'),
+            icon: Icon(Icons.person_outlined),
+            title: Text('Perfil'),
             activeColor: Colors.blueAccent,
             inactiveColor: Colors.black,
             ),
             BottomNavyBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            title: Text('Boutique'),
+            icon: Icon(Icons.extension_rounded),
+            title: Text('Proxima...'),
             activeColor: Colors.blueAccent,
             inactiveColor: Colors.black,
             ),

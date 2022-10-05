@@ -14,9 +14,9 @@ class GradiantBack extends StatelessWidget{
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xFF4268D3),
-            //Color(0xFF584CD1),
-            Colors.black,
+            Color(0xFFF9FAFE),
+            Color(0xFFF9FAFE),
+            //Colors.black,
             //Colors.white
           ],
           begin: FractionalOffset(0.2, 0.0),
@@ -27,8 +27,8 @@ class GradiantBack extends StatelessWidget{
       ),
       child: Text(title,
       style: TextStyle(
-        color: Colors.white,
-        fontSize: 30.0,
+        color: Color(0xFF262C4D),
+        fontSize: 40.0,
         fontFamily: "Lato",
         fontWeight: FontWeight.bold,
        ),

@@ -3,6 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:toxi_app/Ui/Screen/User/swipe_liquid2.dart';
+import 'package:toxi_app/Ui/Screen/User/swipe_liquid3.dart';
+import 'package:toxi_app/Ui/Screen/User/swipe_liquid_1.dart';
 import 'package:toxi_app/Ui/Screen/inicio.dart';
 import '../../Data/Controller/local_noti.dart';
 
@@ -23,14 +26,15 @@ class SwipeLiquid extends StatelessWidget{
                 enableSideReveal: true,
                 slideIconWidget: const Icon(
                   Icons.arrow_back_ios,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 pages: [
-             
+                  swipeL1(),
                   //TUTORIAL
+                  /*
                   Center(
                     child: Container(
-                      color: Colors.green,
+                      color: Colors.white,
                       child: Column(
                         children: [
                           Row(
@@ -65,7 +69,7 @@ class SwipeLiquid extends StatelessWidget{
                             children: [
                               FloatingActionButton(
                                 
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Colors.white,
                                 child: Icon(Icons.alarm_off_outlined, color: Colors.black,),
                                 onPressed: (){
                                   final LocalNoti noti = new LocalNoti();
@@ -97,47 +101,11 @@ class SwipeLiquid extends StatelessWidget{
                       ),
                       ),
                   ),
-             
-             
-                  Container(
-                    color: Colors.white,
-                    child:
-                    Center(
-                      child: Row(
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              // ignore: deprecated_member_use
-                              RaisedButton(
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Inicio()));
-                   }, 
-                   child: const Text('inicio', style: TextStyle(color: Colors.black),),
-                   ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                child: Text("Pagina dos", textAlign: TextAlign.center,),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-              ),
-                  
-             
-             
-                  Container(
-                    color: Colors.blue,
-                    child: const Center(child: Text('pagina tres', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),),
-                  ),
+                  */
+                  swipeL2(),
+
+                  //PAGINA 3
+                  swipeL3(),
                   ]
                 ),
              ), 
@@ -152,7 +120,7 @@ class SwipeLiquid extends StatelessWidget{
                    onPressed: () {
                      controller.jumpToPage(page: 2);
                    }, 
-                   child: const Text('Omitir'),
+                   child: const Text('Ir a la pagina 3', style: TextStyle(color: Colors.black)),
                    ),
 
                   //ANIMATED SMOOTING *ELINADO*
@@ -180,7 +148,7 @@ class SwipeLiquid extends StatelessWidget{
                         duration: 400,
                         );
                    }, 
-                   child: const Text('Sig.')
+                   child: const Text('Sig.', style: TextStyle(color: Colors.black))
                    ),
                ],
              ))

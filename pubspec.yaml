@@ -37,8 +37,10 @@ dependencies:
   rxdart: ^0.27.3
   smooth_page_indicator: ^1.0.0+2
   timezone: ^0.8.0
-  animated_button: ^0.2.0
   just_audio: ^0.9.13
+  google_fonts: ^2.2.0
+  flutter_rating_bar: ^4.0.0
+  connectivity_plus: ^2.3.7
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +63,12 @@ flutter:
     - lib/assets/palabras/bonjour.png
     - lib/assets/palabras/cava.png
     - lib/assets/palabras/bonnenuit.png
+    - lib/assets/waves.png
+    - lib/assets/waves2.png
+    - lib/assets/wavesfinish.png
+    - lib/assets/wavesjoin.png
+    - lib/assets/inglest.png
+    - lib/assets/wavesexercise.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

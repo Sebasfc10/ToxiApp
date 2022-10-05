@@ -1,20 +1,25 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:toxi_app/Data/Controller/aut.dart';
+import 'package:toxi_app/Data/Controller/check_internet_connection.dart';
 import 'package:toxi_app/Data/Controller/push_notification_fmc.dart';
+import 'package:toxi_app/Ui/Widgets/warning_widget_change_notifier.dart';
 import 'Data/Controller/android_widgets.dart';
 import 'Data/models/app_enum.dart';
 //import 'package:form_controller_ui_v1/user_entity.dart';
 import 'package:provider/provider.dart';
 
+final internetChecker = CheckInternetConnection();
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   PushNotificationFMC.initialzeApp();
   runApp(ChangeNotifierProvider(
+    //NOTIFICA A TODOS LOS WIDGETS HIJOS
       create: (context) => AppFirebaseState(), builder: (context, _) => MyApp()));
 }
 
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget {
       title: 'Toxi App Beta 1.1',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Color(0xFFe28568),
+          primaryColor: Colors.white,
           textTheme: TextTheme(headline5: TextStyle()).apply(bodyColor: Color(0xFF6e4875)), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFFe28568))),
       home: MyHomePage(),
     );
@@ -40,8 +45,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: null,
-        backgroundColor: Color(0xFF1B232D),
-        body: Aut()
+        backgroundColor: Colors.white,
+        body: Column(
+          children: [
+            Expanded(child: Aut()),
+          ],
+        )
         );
   }
 }
